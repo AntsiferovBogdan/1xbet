@@ -7,15 +7,15 @@ root.title('Название программы')
 Label(root, text='Введите число').grid(row=3, sticky=W)
 
 
-EntryA = Entry(root, width=10, font='Arial 16')
-Worm12 = Entry(root, width=40, font='Arial 16')
-Worm15 = Entry(root, width=40, font='Arial 16')
-Worm13 = Entry(root, width=40, font='Arial 16')
+EntryA = Entry(root, width=10, font='Arial 14')
+Worm12 = Entry(root, width=38, font='Arial 14')
+Worm15 = Entry(root, width=38, font='Arial 14')
+Worm13 = Entry(root, width=38, font='Arial 14')
 
-Worm10 = Entry(root, width=40, font='Arial 16')
-Worm10_1 = Entry(root, width=40, font='Arial 16')
+Worm10 = Entry(root, width=38, font='Arial 14')
+Worm10_1 = Entry(root, width=38, font='Arial 14')
 
-allert = Entry(root, width=10, font='Arial 16')
+allert = Entry(root, width=10, font='Arial 14')
 
 _1 = Label(root, text=" 3 6 \n2 5", bg="green", relief="groove")
 _2 = Label(root, text=" 6 9 \n5 8", bg="green", relief="groove")
@@ -49,9 +49,9 @@ c = 8
 c_2 = 14
 d = 4
 for i in range(1, 37):
-    square = Label(root, text=str(i), bg="green", height=2, font='Arial 14',
+    square = Label(root, text=str(i), bg="green", height=1, font='Arial 14',
                    relief="groove", highlightcolor="black")
-    square_2 = Label(root, text=str(i), bg="green", height=2,font='Arial 14',
+    square_2 = Label(root, text=str(i), bg="green", height=1, font='Arial 14',
                      relief="groove", highlightcolor="black")
     twins.append(square)
     twins2.append(square_2)
@@ -78,8 +78,8 @@ EntryA.grid(row=3, column=1, sticky=W)
 Worm12.grid(row=5, column=1)
 Worm15.grid(row=6, column=1)
 Worm13.grid(row=7, column=1)
-Worm10.grid(row=8, column=1)
-Worm10_1.grid(row=9, column=1)
+Worm10.grid(row=8, column=1,padx=10, pady=0)
+Worm10_1.grid(row=9, column=1, pady=0)
 allert.grid(row=6, column=0)
 
 a = 5
