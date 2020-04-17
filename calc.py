@@ -49,15 +49,15 @@ c = 8
 c_2 = 14
 d = 4
 for i in range(1, 37):
-    square = Label(root, text=str(i), bg="green", height=2,
+    square = Label(root, text=str(i), bg="green", height=2, font='Arial 14',
                    relief="groove", highlightcolor="black")
-    square_2 = Label(root, text=str(i), bg="green", height=2,
+    square_2 = Label(root, text=str(i), bg="green", height=2,font='Arial 14',
                      relief="groove", highlightcolor="black")
     twins.append(square)
     twins2.append(square_2)
-    square.config(width=5)
+    square.config(width=4)
     square.grid(row=c, column=d)
-    square_2.config(width=5)
+    square_2.config(width=4)
     square_2.grid(row=c_2, column=d)
     if d == 15:
         d = 4
@@ -86,7 +86,7 @@ a = 5
 b = 4
 for i in square_list:
     i.grid(row=a, column=b)
-    i.config(width=5)
+    i.config(width=4, font="Arial 14")
     if b == 14:
         b = 4
         a += 1
@@ -183,6 +183,8 @@ def add(event):
     if list_5[0] == "":
         del list_5[0]
     full_list_1 = list_1 + list_2 + list_3
+    full_list_2 = list_1 + list_2 + list_3 + list_4
+    full_list_3 = list_1 + list_2 + list_3 + list_4 + list_5
 
     try:
         if list_4[0].isdigit():
@@ -211,7 +213,7 @@ def add(event):
     try:
         if list_5[0].isdigit():
             check_4 = []
-            for j in list_4:
+            for j in full_list_2:
                 j = int(j)
                 check_4.append(j)
             if int(list_5[0]) in check_4:
@@ -227,7 +229,7 @@ def add(event):
     try:
         if int(x["text"]) != 0:
             check_5 = []
-            for j in list_5:
+            for j in full_list_3:
                 j = int(j)
                 check_5.append(j)
             if int(x["text"]) in check_5:
