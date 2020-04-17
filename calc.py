@@ -17,46 +17,47 @@ Worm10_1 = Entry(root, width=40, font='Arial 16')
 
 allert = Entry(root, width=10, font='Arial 16')
 
-_1 = Label(root, text=" 3 6 \n2 5", bg="green")
-_2 = Label(root, text=" 6 9 \n5 8", bg="green")
-_3 = Label(root, text=" 9 12 \n8 11", bg="green")
-_4 = Label(root, text=" 12 15 \n11 14", bg="green")
-_5 = Label(root, text=" 15 18 \n14 17", bg="green")
-_6 = Label(root, text=" 18 21 \n17 20", bg="green")
-_7 = Label(root, text=" 21 24 \n20 23", bg="green")
-_8 = Label(root, text=" 24 27 \n23 26", bg="green")
-_9 = Label(root, text=" 27 30 \n26 29", bg="green")
-_10 = Label(root, text=" 30 33 \n29 32", bg="green")
-_11 = Label(root, text=" 33 36 \n32 35", bg="green")
-_12 = Label(root, text=" 2 5 \n1 4", bg="green")
-_13 = Label(root, text=" 5 8 \n4 7", bg="green")
-_14 = Label(root, text=" 8 11 \n7 10", bg="green")
-_15 = Label(root, text=" 11 14 \n10 13", bg="green")
-_16 = Label(root, text=" 14 17 \n13 16", bg="green")
-_17 = Label(root, text=" 17 20 \n16 19", bg="green")
-_18 = Label(root, text=" 20 23 \n19 22", bg="green")
-_19 = Label(root, text=" 23 26 \n22 25", bg="green")
-_20 = Label(root, text=" 26 29 \n25 28", bg="green")
-_21 = Label(root, text=" 29 32 \n28 31", bg="green")
-_22 = Label(root, text=" 32 35 \n31 34", bg="green")
+_1 = Label(root, text=" 3 6 \n2 5", bg="green", relief="groove")
+_2 = Label(root, text=" 6 9 \n5 8", bg="green", relief="groove")
+_3 = Label(root, text=" 9 12 \n8 11", bg="green", relief="groove")
+_4 = Label(root, text=" 12 15 \n11 14", bg="green", relief="groove")
+_5 = Label(root, text=" 15 18 \n14 17", bg="green", relief="groove")
+_6 = Label(root, text=" 18 21 \n17 20", bg="green", relief="groove")
+_7 = Label(root, text=" 21 24 \n20 23", bg="green", relief="groove")
+_8 = Label(root, text=" 24 27 \n23 26", bg="green", relief="groove")
+_9 = Label(root, text=" 27 30 \n26 29", bg="green", relief="groove")
+_10 = Label(root, text=" 30 33 \n29 32", bg="green", relief="groove")
+_11 = Label(root, text=" 33 36 \n32 35", bg="green", relief="groove")
+_12 = Label(root, text=" 2 5 \n1 4", bg="green", relief="groove")
+_13 = Label(root, text=" 5 8 \n4 7", bg="green", relief="groove")
+_14 = Label(root, text=" 8 11 \n7 10", bg="green", relief="groove")
+_15 = Label(root, text=" 11 14 \n10 13", bg="green", relief="groove")
+_16 = Label(root, text=" 14 17 \n13 16", bg="green", relief="groove")
+_17 = Label(root, text=" 17 20 \n16 19", bg="green", relief="groove")
+_18 = Label(root, text=" 20 23 \n19 22", bg="green", relief="groove")
+_19 = Label(root, text=" 23 26 \n22 25", bg="green", relief="groove")
+_20 = Label(root, text=" 26 29 \n25 28", bg="green", relief="groove")
+_21 = Label(root, text=" 29 32 \n28 31", bg="green", relief="groove")
+_22 = Label(root, text=" 32 35 \n31 34", bg="green", relief="groove")
+
+space = Label(root, text="", bg="white", fg="white")
+space.grid(row=13, column=5)
 
 twins = []
 twins2 = []
-c = 10
-c_2 = 13
+c = 8
+c_2 = 14
 d = 4
 for i in range(1, 37):
-    if i < 10:
-        square = Label(root, text=str(i), bg="green")
-        square_2 = Label(root, text=str(i), bg="green")
-    else:
-        square = Label(root, text=str(i), bg="green")
-        square_2 = Label(root, text=str(i), bg="green")
+    square = Label(root, text=str(i), bg="green", height=2,
+                   relief="groove", highlightcolor="black")
+    square_2 = Label(root, text=str(i), bg="green", height=2,
+                     relief="groove", highlightcolor="black")
     twins.append(square)
     twins2.append(square_2)
-    square.config(width=3)
+    square.config(width=5)
     square.grid(row=c, column=d)
-    square_2.config(width=3)
+    square_2.config(width=5)
     square_2.grid(row=c_2, column=d)
     if d == 15:
         d = 4
@@ -85,6 +86,7 @@ a = 5
 b = 4
 for i in square_list:
     i.grid(row=a, column=b)
+    i.config(width=5)
     if b == 14:
         b = 4
         a += 1
@@ -347,9 +349,6 @@ def delete():
         if y in full_list_2:
             print("все четко 2")
         elif int(y) == num:
-            print(y)
-            print(num)
-            print("крашу")
             t["bg"] = "green"
         try:
             if int(list_4[-1]) == num:
