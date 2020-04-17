@@ -7,17 +7,31 @@ root.title('Название программы')
 Label(root, text='Введите число').grid(row=3, sticky=W)
 
 
-EntryA = Entry(root, width=10, font='Arial 14')
+EntryA = Entry(root, width=10, font='Arial 14')  # создаем поля для "червяков"
 Worm12 = Entry(root, width=38, font='Arial 14')
 Worm15 = Entry(root, width=38, font='Arial 14')
 Worm13 = Entry(root, width=38, font='Arial 14')
-
 Worm10 = Entry(root, width=38, font='Arial 14')
 Worm10_1 = Entry(root, width=38, font='Arial 14')
 
-allert = Entry(root, width=10, font='Arial 14')
+allert = Entry(root, width=10, font='Arial 14')   # и предупреждений
 
-_1 = Label(root, text=" 3 6 \n2 5", bg="green", relief="groove")
+EntryA.grid(row=3, column=1, sticky=W)  # и размещаем на сетке
+Worm12.grid(row=5, column=1)
+Worm15.grid(row=6, column=1)
+Worm13.grid(row=7, column=1)
+Worm10.grid(row=8, column=1, padx=10, pady=0)
+Worm10_1.grid(row=9, column=1, pady=0)
+allert.grid(row=6, column=0)
+
+space = Label(root, text="", bg="white", fg="white")  # необходимо для разрыва
+space.grid(row=13, column=5)                          # между таблицами 2 и 3
+
+x = Label(root, bg="white", fg="white")  # число, вылетевшее из червяка №3
+x.grid(row=7, column=0)
+x.config(width=1)
+
+_1 = Label(root, text=" 3 6 \n2 5", bg="green", relief="groove")  # таблица от заказчика
 _2 = Label(root, text=" 6 9 \n5 8", bg="green", relief="groove")
 _3 = Label(root, text=" 9 12 \n8 11", bg="green", relief="groove")
 _4 = Label(root, text=" 12 15 \n11 14", bg="green", relief="groove")
@@ -40,10 +54,7 @@ _20 = Label(root, text=" 26 29 \n25 28", bg="green", relief="groove")
 _21 = Label(root, text=" 29 32 \n28 31", bg="green", relief="groove")
 _22 = Label(root, text=" 32 35 \n31 34", bg="green", relief="groove")
 
-space = Label(root, text="", bg="white", fg="white")
-space.grid(row=13, column=5)
-
-twins = []
+twins = []  # создаем таблицы 2 и 3
 twins2 = []
 c = 8
 c_2 = 14
@@ -56,7 +67,7 @@ for i in range(1, 37):
     twins.append(square)
     twins2.append(square_2)
     square.config(width=4)
-    square.grid(row=c, column=d)
+    square.grid(row=c, column=d)  # и размещаем их на сетке
     square_2.config(width=4)
     square_2.grid(row=c_2, column=d)
     if d == 15:
@@ -66,21 +77,9 @@ for i in range(1, 37):
     else:
         d += 1
 
-square_list = [_1, _2, _3, _4, _5, _6, _7, _8, _9,
-               _10, _11, _12, _13, _14, _15, _16,
+square_list = [_1, _2, _3, _4, _5, _6, _7, _8, _9,  # также размещаем таблицу 1
+               _10, _11, _12, _13, _14, _15, _16,   # на сетке
                _17, _18, _19, _20, _21, _22]
-
-x = Label(root, bg="white", fg="white")
-x.grid(row=7, column=0)
-x.config(width=1)
-
-EntryA.grid(row=3, column=1, sticky=W)
-Worm12.grid(row=5, column=1)
-Worm15.grid(row=6, column=1)
-Worm13.grid(row=7, column=1)
-Worm10.grid(row=8, column=1,padx=10, pady=0)
-Worm10_1.grid(row=9, column=1, pady=0)
-allert.grid(row=6, column=0)
 
 a = 5
 b = 4
@@ -95,9 +94,9 @@ for i in square_list:
 
 
 def add(event):
-    a = EntryA.get()
+    a = EntryA.get()  # получаем информацию из Ввода
     a = str(a)
-    if a.isdigit() and 0 < int(a) < 37:
+    if a.isdigit() and 0 < int(a) < 37:  # проверяем ее
         allert.delete(0, END)
     else:
         allert.delete(0, END)
@@ -111,7 +110,7 @@ def add(event):
     worm10 = Worm10.get()
     worm10_1 = Worm10_1.get()
 
-    list_1 = worm12.split("|")
+    list_1 = worm12.split("|")  # операции для дальнейшего подсчета элементов
     list_2 = worm15.split("|")
     list_3 = worm13.split("|")
     list_4 = worm10.split("|")
@@ -125,7 +124,7 @@ def add(event):
 
     result = "|" + a
 
-    if len(seps_1) < 12:
+    if len(seps_1) < 12:  # проверяем, куда вставлять число
         Worm12.insert(0, result)
     else:
         if len(seps_2) >= 15:
@@ -144,7 +143,7 @@ def add(event):
         Worm15.insert(0, "|" + list_1[-1])
         Worm12.insert(0, result)
     EntryA.delete(0, END)
-    for i in square_list:
+    for i in square_list:  # и последующее окрашивание введенного числа
         nums = i["text"].split(" ")
         caret = nums[3].split("\n")
         nums[3] = caret[1]
@@ -186,7 +185,7 @@ def add(event):
     full_list_2 = list_1 + list_2 + list_3 + list_4
     full_list_3 = list_1 + list_2 + list_3 + list_4 + list_5
 
-    try:
+    try:  # затем проверяем числа, которые "уехали" из 1 или 2 червяка
         if list_4[0].isdigit():
             check_13 = []
             for j in full_list_1:
@@ -243,10 +242,10 @@ def add(event):
         pass
 
 
-root.bind("<Return>", add)
+root.bind("<Return>", add)  # ввод числа по нажатию на Enter
 
 
-def delete():
+def delete():  # в данной функции все ананлогично функции add, но наоборот
     worm12 = Worm12.get()
     worm15 = Worm15.get()
     worm13 = Worm13.get()
@@ -270,7 +269,6 @@ def delete():
         del list_5[0]
 
     seps_1 = re.findall(r"[|]", worm12)
-    seps_2 = re.findall(r"[|]", worm15)
     seps_3 = re.findall(r"[|]", worm13)
     seps_4 = re.findall(r"[|]", worm10)
     seps_5 = re.findall(r"[|]", worm10_1)
@@ -371,7 +369,7 @@ def delete():
             pass
 
 
-but = Button(root, text='Добавить', command=add)
+but = Button(root, text='Добавить', command=add)  # размещение главных кнопок
 but.grid(row=4, column=0, sticky=W)
 
 but2 = Button(root, text='Удалить', command=delete)
