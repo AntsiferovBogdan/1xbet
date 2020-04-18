@@ -56,7 +56,7 @@ _22 = Label(root, text=" 32 35 \n31 34", bg="green", relief="groove")
 
 twins = []  # создаем таблицы 2 и 3
 twins2 = []
-c = 8
+c = 10
 c_2 = 16
 d = 4
 d_2 = 4
@@ -71,11 +71,11 @@ for i in range(1, 37):
     square.grid(row=c, column=d)  # и размещаем их на сетке
     square_2.config(width=4)
     square_2.grid(row=c_2, column=d_2)
-    if d == 15:
-        d = 4
-        c += 1
-    else:
+    if c == 8:
+        c += 2
         d += 1
+    else:
+        c -= 1
     if c_2 == 14:
         c_2 += 2
         d_2 += 1
