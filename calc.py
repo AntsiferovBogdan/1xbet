@@ -13,7 +13,6 @@ Worm15 = Entry(root, width=38, font='Arial 14')
 Worm13 = Entry(root, width=38, font='Arial 14')
 Worm10 = Entry(root, width=38, font='Arial 14')
 Worm10_1 = Entry(root, width=38, font='Arial 14')
-
 allert = Entry(root, width=10, font='Arial 14')   # и предупреждений
 
 EntryA.grid(row=3, column=1, sticky=W)  # и размещаем на сетке
@@ -54,35 +53,7 @@ _20 = Label(root, text=" 26 29 \n25 28", bg="green", relief="groove")
 _21 = Label(root, text=" 29 32 \n28 31", bg="green", relief="groove")
 _22 = Label(root, text=" 32 35 \n31 34", bg="green", relief="groove")
 
-twins = []  # создаем таблицы 2 и 3
-twins2 = []
-c = 10
-c_2 = 16
-d = 4
-d_2 = 4
-for i in range(1, 37):
-    square = Label(root, text=str(i), bg="green", height=1, font='Arial 14',
-                   relief="groove", highlightcolor="black")
-    square_2 = Label(root, text=str(i), bg="green", height=1, font='Arial 14',
-                     relief="groove", highlightcolor="black")
-    twins.append(square)
-    twins2.append(square_2)
-    square.config(width=4)
-    square.grid(row=c, column=d)  # и размещаем их на сетке
-    square_2.config(width=4)
-    square_2.grid(row=c_2, column=d_2)
-    if c == 8:
-        c += 2
-        d += 1
-    else:
-        c -= 1
-    if c_2 == 14:
-        c_2 += 2
-        d_2 += 1
-    else:
-        c_2 -= 1
-
-square_list = [_1, _2, _3, _4, _5, _6, _7, _8, _9,  # также размещаем таблицу 1
+square_list = [_1, _2, _3, _4, _5, _6, _7, _8, _9,  # размещаем таблицу 1
                _10, _11, _12, _13, _14, _15, _16,   # на сетке
                _17, _18, _19, _20, _21, _22]
 
@@ -97,19 +68,43 @@ for i in square_list:
     else:
         b += 1
 
+twins = []  # создаем таблицы 2 и 3
+twins2 = []
+c = 10
+c_2 = 16
+d = 4
+for i in range(1, 37):
+    square = Label(root, text=str(i), bg="green", height=1, font='Arial 14',
+                   relief="groove", highlightcolor="black")
+    square_2 = Label(root, text=str(i), bg="green", height=1, font='Arial 14',
+                     relief="groove", highlightcolor="black")
+    twins.append(square)
+    twins2.append(square_2)
+    square.config(width=4)
+    square.grid(row=c, column=d)  # и размещаем их на сетке
+    square_2.config(width=4)
+    square_2.grid(row=c_2, column=d)
+    if c == 8:
+        c += 2
+        c_2 += 2
+        d += 1
+    else:
+        c -= 1
+        c_2 -= 1
+
 
 def add(event):
     a = EntryA.get()  # получаем информацию из Ввода
-    a = str(a)
     if a.isdigit() and 0 < int(a) < 37:  # проверяем ее
         allert.delete(0, END)
+        EntryA.delete(0, END)
     else:
         allert.delete(0, END)
         allert.insert(0, "Ошибка!")
         EntryA.delete(0, END)
         return
 
-    worm12 = Worm12.get()
+    worm12 = Worm12.get()  # получаем информацию из "червяков"
     worm15 = Worm15.get()
     worm13 = Worm13.get()
     worm10 = Worm10.get()
@@ -147,11 +142,10 @@ def add(event):
         Worm12.delete(len(worm12) - len(list_1[-1])-1, END)
         Worm15.insert(0, "|" + list_1[-1])
         Worm12.insert(0, result)
-    EntryA.delete(0, END)
+
     for i in square_list:  # и последующее окрашивание введенного числа
         nums = i["text"].split(" ")
-        caret = nums[3].split("\n")
-        nums[3] = caret[1]
+        nums[3] = nums[3].split("\n")[1]
         if a in nums:
             i["bg"] = "red"
 
@@ -201,8 +195,7 @@ def add(event):
             else:
                 for i in square_list:
                     nums = i["text"].split(" ")
-                    caret = nums[3].split("\n")
-                    nums[3] = caret[1]
+                    nums[3] = nums[3].split("\n")[1]
                     del nums[0]
                     if list_4[0] in nums:
                         for num in nums:
@@ -332,8 +325,7 @@ def delete():  # в данной функции все ананлогично ф
 
     for i in square_list:
         nums = i["text"].split(" ")
-        caret = nums[3].split("\n")
-        nums[3] = caret[1]
+        nums[3] = nums[3].split("\n")[1]
         del nums[0]
         if y in full_list_1:
             print("все четко")
@@ -374,10 +366,10 @@ def delete():  # в данной функции все ананлогично ф
             pass
 
 
-but = Button(root, text='Добавить', command=add)  # размещение главных кнопок
+but = Button(root, text="Добавить", command=add)  # размещение главных кнопок
 but.grid(row=4, column=0, sticky=W)
 
-but2 = Button(root, text='Удалить', command=delete)
+but2 = Button(root, text="Удалить", command=delete)
 but2.grid(row=5, column=0, sticky=W)
 
 root.mainloop()
