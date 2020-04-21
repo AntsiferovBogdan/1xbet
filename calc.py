@@ -56,9 +56,10 @@ _22 = Label(root, text=" 32 35 \n31 34", bg="green", relief="groove")
 
 twins = []  # создаем таблицы 2 и 3
 twins2 = []
-c = 8
-c_2 = 14
+c = 10
+c_2 = 16
 d = 4
+d_2 = 4
 for i in range(1, 37):
     square = Label(root, text=str(i), bg="green", height=1, font='Arial 14',
                    relief="groove", highlightcolor="black")
@@ -69,13 +70,17 @@ for i in range(1, 37):
     square.config(width=4)
     square.grid(row=c, column=d)  # и размещаем их на сетке
     square_2.config(width=4)
-    square_2.grid(row=c_2, column=d)
-    if d == 15:
-        d = 4
-        c += 1
-        c_2 += 1
-    else:
+    square_2.grid(row=c_2, column=d_2)
+    if c == 8:
+        c += 2
         d += 1
+    else:
+        c -= 1
+    if c_2 == 14:
+        c_2 += 2
+        d_2 += 1
+    else:
+        c_2 -= 1
 
 square_list = [_1, _2, _3, _4, _5, _6, _7, _8, _9,  # также размещаем таблицу 1
                _10, _11, _12, _13, _14, _15, _16,   # на сетке
